@@ -77,15 +77,25 @@ function startAudio() {
     });
 }
 
+audioToggle.addEventListener('click', toggleAudio);
 
-audioToggle.addEventListener('click', () => {
-    if (audio.paused) {
-      audio.play();
-      audioToggle.textContent = '||';
-      waveContainer.style.display = 'block'; // Show the wave
-    } else {
-      audio.pause();
-      audioToggle.textContent = '▶';
-      waveContainer.style.display = 'none'; // Hide the wave
-    }
-  });
+// Handle Spacebar to toggle play/pause
+document.addEventListener('keydown', (e) => {
+  if (e.code === 'Space') {
+    e.preventDefault(); // Prevent default browser behavior (scrolling)
+    toggleAudio();
+  }
+});
+
+// Function to toggle audio and button symbols
+function toggleAudio() {
+  if (audio.paused) {
+    audio.play();
+    audioToggle.innerHTML = '&#10074;&#10074;'; // Pause symbol
+    waveContainer.style.display = 'block'; // Show waves
+  } else {
+    audio.pause();
+    audioToggle.innerHTML = '&#9658;'; // Play symbol
+    waveContainer.style.display = 'none'; // Hide waves
+  }
+}
