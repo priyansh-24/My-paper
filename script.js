@@ -6,7 +6,8 @@ audioToggle.style.display = 'none';
 let isDragging = false;
 let offsetX = 0; 
 let offsetY = 0;
-audio.volume = 0.1; 
+audio.volume = 0.1;  
+
 audio.pause();
 // Dragging with the mouse
 crumpledPaper.addEventListener('mousedown', (e) => {
