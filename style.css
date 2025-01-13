@@ -48,6 +48,7 @@ body {
     display: none; /* Initially hidden */
     max-width: 800px;
     margin: 2rem auto;
+    overflow: auto;
     padding: 1.5rem;
     background-color: rgb(255, 255, 255);
     background-image: url('img/6.jpg');
