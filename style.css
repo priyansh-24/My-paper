@@ -5,6 +5,9 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden; 
+    display: flex;
+    justify-content: center;
+    overflow:auto;
   }
   
   /* Crumpled Paper */
@@ -47,8 +50,7 @@ body {
   .container {
     display: none; /* Initially hidden */
     max-width: 800px;
-    margin: 2rem auto;
-    overflow: auto;
+    margin: 2rem ;
     padding: 1.5rem;
     background-color: rgb(255, 255, 255);
     background-image: url('img/6.jpg');
@@ -113,6 +115,7 @@ body {
     justify-content: center;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 2;   /* Keeps it behind other elements */
   }
   
   .audio-toggle-btn:hover {
@@ -127,7 +130,7 @@ body {
     height: 35px;
     border-radius: 50%;
     display: none; /* Initially hidden */
-    z-index: -1;   /* Keeps it behind other elements */
+    z-index: 1;   /* Keeps it behind other elements */
   }
   
   /* Individual waves */
