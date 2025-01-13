@@ -68,6 +68,19 @@ crumpledPaper.addEventListener('click', () => {
 });
 
 
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    crumpledPaper.classList.add('unfolding');
+    setTimeout(() => {
+      menuBar.style.left = '0px'; // Slide in the menu
+      crumpledPaper.style.display = 'none';
+      document.getElementById("home").classList.add("active");
+      startAudio(); // Start audio after unfolding
+    }, 1000);
+  }
+});
+
+
 
 // Start audio and show toggle button
 function startAudio() {
@@ -133,6 +146,12 @@ document.addEventListener('keydown', (event) => {
     currentIndex = (currentIndex + 1) % menuItems.length; // Move right, loop back to start
     updateActiveItem(currentIndex);
   } else if (event.key === 'ArrowLeft') {
+    currentIndex = (currentIndex - 1 + menuItems.length) % menuItems.length; // Move left, loop back to end
+    updateActiveItem(currentIndex);
+  } else if (event.key === 'ArrowDown') {
+    currentIndex = (currentIndex + 1) % menuItems.length; // Move right, loop back to start
+    updateActiveItem(currentIndex);
+  } else if (event.key === 'ArrowUp') {
     currentIndex = (currentIndex - 1 + menuItems.length) % menuItems.length; // Move left, loop back to end
     updateActiveItem(currentIndex);
   }
