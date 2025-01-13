@@ -55,6 +55,19 @@ body {
     border-image: url('img/2.png') 60 round;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
+
+  .portrait-photo {
+    float: right; /* Float the image to the right */
+    margin: 0 0 10px 15px; /* Spacing between the image and text */
+    width: 80px; /* Adjust size as needed */
+    height: auto;
+    position: relative;
+    background-color: rgb(179, 179, 150); /* Background for the border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Shadow for a lifted effect */
+    border: 1px solid black; /* Transparent border (optional) */
+  }
+  
+  
   
   /* Header */
   header {
