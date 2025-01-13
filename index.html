@@ -6,29 +6,95 @@
   <title>Dustbin</title>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css"> 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>  
 
   <!-- Crumpled Paper -->
   <div class="crumpled-paper" id="crumpledPaper"></div>
 
-  <!-- Unfolded Content -->
-  <div class="container" id="contentContainer">
+  
+
+  <div class="container" id="home">
     <header>Welcome to My Unseen Portfolio</header>
     <img src="img/my.jpg" alt="Portrait Photo" class="portrait-photo">
     <p>Whether you found this site by accident or intentionally, I <strong>(Priyansh Agrawal)</strong> welcome you.</p>
-    
     <!-- Why This Portfolio Section -->
     <h2>Warning !</h2>
     <ul>
+      <br>
       <li><strong>I have no idea what I'm doing!</strong> But that's the point.</li>
+      <br>
       <li><strong>Not Perfection:</strong> This portfolio is full of errors, typos, and moments of complete confusion. But hey, that's where the magic happens, right?</li>
+      <br>
       <li><strong>Never Finished:</strong> Much like my life, this portfolio is a work in progress. The projects are always changing, updating, or disappearing entirely. If you find one that's good, consider yourself lucky.</li>
+      <br>
       <li><strong>If you pretend like you understand?</strong> I promise you’ll be just as confused as me. Welcome to my "masterpiece"!</li>
+      <br>
     </ul>
-
-    <p>Explore <a href="#">more about me</a>.</p>
+    <p data-section="journey">Explore <b id="exploreMore">more about me</b>.</p>
   </div>
+
+  <div class="container" id="journey">
+    <header>My Journey</header>
+    <p>This graph represents the ups and downs of my academic journey over time:</p>
+    <canvas id="journeyChart" width="400" height="200"></canvas>
+  </div>
+  
+  
+  <div class="container" id="projects">
+    <header>My Projects</header>
+    
+  </div>
+
+  <div class="container" id="achivements">
+    <header>My Achievements</header>
+    <div class="journey-map">
+  
+      <!-- Paper pinned on the left -->
+      <div class="paper left">
+        <img src="img/pin.png" alt="Pin" class="pin">
+        <div class="content">
+          <h3>Milestone 1</h3>
+          <p>Got selected in Top-50 in e-yantra robotics compedition</p>
+        </div>
+      </div>
+  
+      <!-- Paper pinned on the right -->
+      <div class="paper right">
+        <img src="img/pin.png" alt="Pin" class="pin">
+        <div class="content">
+          <h3>Milestone 2</h3>
+          <p>My class 12th Board PCM average was 98 marks</p>
+        </div>
+      </div>
+  
+      <!-- Add more papers as needed -->
+      <div class="paper left">
+        <img src="img/pin.png" alt="Pin" class="pin">
+        <div class="content">
+          <h3>Milestone 3</h3>
+          <p>Started working on my startup of custumizable t-shirt Lo0ser.</p>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  
+
+  
+  <!-- Slide-In Menu -->
+  <div class="menu-bar" id="menuBar">
+    <ul>
+      <li class="active" data-section="home"><a href="#">Home</a></li>
+      <li data-section="journey"><a href="#">Journey</a></li>
+      <li data-section="projects"><a href="#">Projects</a></li>
+      <li data-section="achivements"><a href="#">Achievements</a></li>
+    </ul>
+  </div>
+  
+  
+
 
   <!-- Audio Element -->
   <audio id="backgroundMusic" loop autoplay>
@@ -43,6 +109,26 @@
     <div class="wave wave2"></div>
     <div class="wave wave3"></div>
   </div>
+
+  <!-- Toolbox and Contact Buttons -->
+<div class="extra-buttons">
+  <button id="toolboxButton" class="extra-btn">🔧</button>
+  <button id="contactButton" class="extra-btn">✉️</button>
+</div>
+
+
+<!-- Popup Divs -->
+<div id="toolboxPopup" class="popup">
+  <h4>Toolbox</h4>
+  <p>Here are your toolbox options.</p>
+</div>
+
+<div id="contactPopup" class="popup">
+  <h4>Contact</h4>
+  <p>Contact us at support@example.com</p>
+</div>
+
+
   
   <script src="script.js"></script>
 </body>

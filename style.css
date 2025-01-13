@@ -49,14 +49,20 @@ body {
   /* Container with torn paper borders */
   .container {
     display: none; /* Initially hidden */
-    max-width: 800px;
+    max-width: 880px;
+    width: 100%;
     margin: 2rem ;
     padding: 1.5rem;
     background-color: rgb(255, 255, 255);
     background-image: url('img/6.jpg');
+    background-size: contain;
     border: 10px solid transparent;
     border-image: url('img/2.png') 60 round;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .container.active {
+    display: block; /* Only show the active container */
   }
 
   .portrait-photo {
@@ -71,45 +77,187 @@ body {
   }
   
   
-  
-  /* Header */
   header {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 3rem; /* Increased font size for headers */
     margin-bottom: 1rem;
   }
   
   /* Paragraphs and other elements */
   p {
-    font-size: 1.2rem;
-    line-height: 1.6;
+    font-size: 1.4rem; /* Increased paragraph font size */
+    line-height: 1.8;
     margin-bottom: 1rem;
   }
   
-  a {
+  /* Bold elements */
+  b {
     color: #0077cc;
     text-decoration: none;
     border-bottom: 2px solid #0077cc;
+    font-size: 1.4rem; /* Adjusted font size for emphasis */
   }
   
-  a:hover {
+  b:hover {
     color: #005999;
     border-bottom-color: #005999;
   }
   
+  /* List items */
+  ul li {
+    font-size: 1.3rem; /* Increased font size for list items */
+    margin-bottom: 0.6rem;
+    margin-top: 0.6rem;
+  }
+
+
+
+  /* General Styling */
+.journey-map {
+  position: relative;
+  width: 100%;
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+ 
+.paper {
+  position: relative;
+  width: 250px;
+  background: #fef6e4;
+  border: 1px solid #e0c097;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin: 0px;
+  border-radius: 10px;
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  z-index: 1;
+}
+
+.paper h3 {
+  margin: 0 0 10px;
+}
+
+.paper p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* Pin styling */
+.pin {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-30%);
+  width: 30px;
+  height: 30px;
+}
+
+/* Left papers */
+.paper.left {
+  align-self: flex-start;
+  transform: translateX(30%);
+}
+
+/* Right papers */
+.paper.right {
+  align-self: flex-end;
+  transform: translateX(-50%);
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .paper.left,
+  .paper.right {
+    align-self: center;
+    transform: translateX(0%);
+  }
+}
+
+
+/* Extra Buttons */
+.extra-buttons {
+  position: fixed;
+  bottom: 25px; /* Adjust this to position above the audio toggle button */
+  right: 25px; /* Same as the audio toggle button */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between the buttons */
+  z-index: 2; /* Same as the audio toggle button */
+}
+
+.extra-btn {
+  background-color: rgb(67, 67, 67); /* Match the audio toggle button */
+  color: white;
+  border: none;
+  padding: 8px;
+  font-size: 22px; /* Same as the audio toggle button */
+  border-radius: 50%; /* Circular button */
+  width: 50px; /* Same as the audio toggle button */
+  height: 50px; /* Same as the audio toggle button */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Match shadow */
+  transition: all 0.3s ease;
+}
+
+.extra-btn:hover {
+  background-color: rgb(100, 100, 100); /* Slightly lighter on hover */
+  transform: rotate(25deg);
+}
+
+.extra-buttons {
+  display: none;
+}
+
+/* Popup Styling */
+.popup {
+  position: fixed;
+  bottom: 80px; /* Above the buttons */
+  right: 25px;
+  background-color: white;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  display: none; /* Hidden by default */
+  z-index: 999;
+}
+
+.popup h4 {
+  margin: 0;
+  margin-bottom: 5px;
+  color: rgb(67, 67, 67);
+  font-size: 14px;
+}
+
+.popup p {
+  margin: 0;
+  font-size: 12px;
+  color: rgb(100, 100, 100);
+}
+
+
+
 
   .audio-toggle-btn {
     position: fixed;
-    bottom: 25px;
+    bottom: 170px;
     right: 25px;
     background-color: rgb(67, 67, 67);
     color: white;
     border: none;
     padding: 8px;
-    font-size: 12px;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
     border-radius: 50%;
-    width: 35px;
-    height: 35px;
+    width: 50px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -119,15 +267,15 @@ body {
   }
   
   .audio-toggle-btn:hover {
-    background-color: #457079;
+    background-color: rgb(100, 100, 100);
   }
 /* Wave container at the bottom */
 .wave-container {
     position: fixed;
-    bottom: 25px; /* Adjusted for better visibility */
+    bottom: 170px; /* Adjusted for better visibility */
     right: 25px;  /* Consistent with audio toggle button */
-    width: 35px;  /* Matches the toggle button size */
-    height: 35px;
+    width: 50px;  /* Matches the toggle button size */
+    height: 50px;
     border-radius: 50%;
     display: none; /* Initially hidden */
     z-index: 1;   /* Keeps it behind other elements */
@@ -177,5 +325,59 @@ body {
       opacity: 0;
     }
   }
+
+
+
+
   
-  
+ /* Menu Bar on the Left */
+.menu-bar {
+  position: fixed;
+  top: 0;
+  left: -250px; /* Initially hidden */
+  width: 50px;
+  height: 100%;
+  color: white;
+  transition: left 0.3s ease; /* Smooth slide-in effect */
+  z-index: 1000;
+}
+
+/* Vertical Text for Menu Items */
+.menu-bar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%; /* Full height */
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+}
+
+.menu-bar ul li {
+  background-color: #333;
+  flex: 1; /* Equal height for each menu item */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2); /* Divider */
+  border-top-right-radius: 15px; /* Rounded top-right corner */
+  border-bottom-right-radius: 15px; /* Rounded bottom-right corner */
+}
+/* Style for the active (currently selected) menu item */
+.menu-bar ul li.active {
+  background-color: #212020;
+  margin-right: -10px;
+}
+.menu-bar ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  text-align: center;
+  display: block;
+  writing-mode: vertical-rl; /* Rotate text vertically */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.menu-bar ul li a:hover {
+  color: rgb(180, 180, 180);
+  text-decoration: none;
+}
