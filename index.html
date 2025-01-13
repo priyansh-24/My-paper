@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dustbin</title>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css"> 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -22,13 +24,9 @@
     <!-- Why This Portfolio Section -->
     <h2>Warning !</h2>
     <ul>
-      <br>
       <li><strong>I have no idea what I'm doing!</strong> But that's the point.</li>
-      <br>
       <li><strong>Not Perfection:</strong> This portfolio is full of errors, typos, and moments of complete confusion. But hey, that's where the magic happens, right?</li>
-      <br>
       <li><strong>Never Finished:</strong> Much like my life, this portfolio is a work in progress. The projects are always changing, updating, or disappearing entirely. If you find one that's good, consider yourself lucky.</li>
-      <br>
       <li><strong>If you pretend like you understand?</strong> I promise you’ll be just as confused as me. Welcome to my "masterpiece"!</li>
       <br>
     </ul>
@@ -110,6 +108,7 @@
     <div class="wave wave3"></div>
   </div>
 
+  
   <!-- Toolbox and Contact Buttons -->
 <div class="extra-buttons">
   <button id="toolboxButton" class="extra-btn">🔧</button>
@@ -117,15 +116,134 @@
 </div>
 
 
-<!-- Popup Divs -->
-<div id="toolboxPopup" class="popup">
-  <h4>Toolbox</h4>
-  <p>Here are your toolbox options.</p>
+
+<!-- Overlay for Background Fade -->
+<div id="overlay" class="overlay"></div>
+
+
+<!-- Popup for Toolbox -->
+<div id="toolboxPopup" class="center-popup">
+  <div class="popup-content">
+    <span class="close-btn">&times;</span>
+    <!-- Toolbox List -->
+    <div class="toolbox-list">
+      <div class="toolbox-row">
+        <!-- HTML Icon -->
+        <div class="toolbox-item">
+          <i class="fab fa-html5"></i>
+          <span>HTML</span>
+        </div>
+
+        <!-- CSS Icon -->
+        <div class="toolbox-item">
+          <i class="fab fa-css3-alt"></i>
+          <span>CSS</span>
+        </div>
+
+        <!-- JavaScript Icon -->
+        <div class="toolbox-item">
+          <i class="fab fa-js-square"></i>
+          <span>JS</span>
+        </div>
+
+        <!-- C# Icon -->
+        <div class="toolbox-item">
+          <i class="fab fa-cuttlefish"></i> <!-- No exact C# icon, this is a placeholder -->
+          <span>C#</span>
+        </div>
+      </div>
+      <div class="toolbox-row">
+        <!-- Python Icon -->
+        <div class="toolbox-item">
+          <i class="fab fa-python"></i>
+          <span>Python</span>
+        </div>
+
+        <!-- React Icon -->
+        <div class="toolbox-item">
+          <i class="fab fa-react"></i>
+          <span>React</span>
+        </div>
+
+        <!-- C++ Icon -->
+        <div class="toolbox-item">
+          <i class="fab fa-android"></i>
+          <span>Android Studio</span>
+        </div>
+
+        <!-- Java Icon -->
+        <div class="toolbox-item">
+          <i class="fab fa-java"></i>
+          <span>Java</span>
+        </div>
+
+      </div>
+      <div class="toolbox-row">
+        <div class="toolbox-item">
+          <i class="fab fa-unity"></i>
+          <span>Unity</span>
+        </div>
+        <!-- Git Icon -->
+        <div class="toolbox-item">
+          <i class="fab fa-git-alt"></i>
+          <span>Git</span>
+        </div>
+      
+        <div class="toolbox-item">
+          <i class="fas fa-laptop-code"></i>
+          <span>Arduino IDE</span>
+        </div>
+        
+        <div class="toolbox-item">
+          <i class="fas fa-robot"></i>
+          <span>Electronics</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div id="contactPopup" class="popup">
-  <h4>Contact</h4>
-  <p>Contact us at support@example.com</p>
+
+
+<!-- Popup Contact Card -->
+<div id="contactPopup" class="center-popup">
+  <span class="close-btn">&times;</span>
+  <div class="contact-card">
+    <!-- Contact Details Section -->
+    <div class="contact-details">
+      <ul>
+        <li>
+          <a href="tel:+917008544921" target="_blank">
+            <i class="fas fa-phone"></i> 7008544921
+          </a>
+        </li>
+        <li>
+          <a href="gunutig123@gmail.com" target="_blank">
+            <i class="fas fa-envelope"></i> gunutig123@gmail.com
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/priyansh-24" target="_blank">
+            <i class="fab fa-github"></i> github.com/priyansh-24
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/priyansh.agrawal" target="_blank">
+            <i class="fab fa-instagram"></i> instagram.com/priyansh.agrawal
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/priyansh-agrawal-1b5076282/" target="_blank">
+            <i class="fab fa-linkedin"></i> linkedin.com/in/priyansh-agrawal
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- Image Section -->
+    <div class="contact-image">
+      <img src="img/bee.webp" alt="Profile Image">
+    </div>
+  </div>
 </div>
 
 

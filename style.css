@@ -48,6 +48,7 @@ body {
   
   /* Container with torn paper borders */
   .container {
+    font-family: 'Patrick Hand', cursive; /* Handwritten font with fallback */
     display: none; /* Initially hidden */
     max-width: 880px;
     width: 100%;
@@ -67,13 +68,13 @@ body {
 
   .portrait-photo {
     float: right; /* Float the image to the right */
-    margin: 0 0 10px 15px; /* Spacing between the image and text */
-    width: 80px; /* Adjust size as needed */
+    margin: 15px; /* Spacing between the image and text */
+    width: 120px; /* Adjust size as needed */
     height: auto;
     position: relative;
     background-color: rgb(179, 179, 150); /* Background for the border */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Shadow for a lifted effect */
-    border: 1px solid black; /* Transparent border (optional) */
+    border: 2px solid black; /* Transparent border (optional) */
   }
   
   
@@ -215,33 +216,173 @@ body {
   display: none;
 }
 
-/* Popup Styling */
-.popup {
+/* Centered Popup Styles */
+.center-popup {
   position: fixed;
-  bottom: 80px; /* Above the buttons */
-  right: 25px;
-  background-color: white;
-  border: 1px solid rgb(200, 200, 200);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  display: none; /* Hidden by default */
-  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8); /* Initial scale for animation */
+  width: 90%;
+  max-width: 500px;
+  background-image: url('13.jpg');
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  z-index: 1000;
+  display: none;
+  transition: all 0.4s ease-in-out;
 }
 
-.popup h4 {
+/* Show Popup */
+.center-popup.show {
+  display: block;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 25px;
+  color: #313131;
+  cursor: pointer;
+  background: none;
+  font-weight: bolder;
+  border: none;
+  outline: none;
+  padding: 5px;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #000000;
+  font-weight: bolder;
+  transform: rotate(20deg);
+}
+
+/* Contact Card */
+.contact-card {
+  background-color: rgb(255, 255, 255,0.3);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #fff;
+}
+
+/* Image Section */
+.contact-image img {
+  width: 150px;
+  height: auto;
+  border-radius: 10%;
+  margin: 15px;
+  object-fit: cover;
+}
+
+/* Contact Details Section */
+.contact-details {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.contact-details ul {
+  list-style: none;
+  padding: 0;
   margin: 0;
+}
+
+.contact-details ul li {
+  margin-bottom: 15px;
+}
+
+.contact-details ul li a {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #191919;
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.contact-details ul li a i {
+  margin-right: 10px;
+  font-size: 18px;
+  color: #000000;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.contact-details ul li a:hover {
+  transform: translateX(5px);
+  color: #0077cc;
+}
+
+.contact-details ul li a:hover i {
+  color: #004373;
+  transform: rotate(15deg);
+}
+
+/* Toolbox List */
+.toolbox-list {
+  background-color: rgb(255, 255, 255,0.3);
+  padding: 20px;
+  color: #fff;
+}
+
+/* Toolbox Row */
+.toolbox-row {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Toolbox Item */
+.toolbox-item {
+  width: 18%; /* Each item takes up about 1/5th of the row */
+  text-align: center;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.toolbox-item i {
+  font-size: 24px;
+  color: #151515;
   margin-bottom: 5px;
-  color: rgb(67, 67, 67);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.toolbox-item span {
+  width: 200%;
   font-size: 14px;
+  color: #000000;
+  opacity: 0; /* Hidden initially */
+  position: absolute;
+  font-weight: bold;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.3s ease, bottom 0.3s ease;
 }
 
-.popup p {
-  margin: 0;
-  font-size: 12px;
-  color: rgb(100, 100, 100);
+.toolbox-item:hover i {
+  color: #004373;
+  transform: rotate(15deg); /* Twist the icon */
 }
 
+.toolbox-item:hover span {
+  opacity: 1; /* Show the name */
+  bottom: 30px; /* Move the name up */
+}
 
 
 

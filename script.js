@@ -107,27 +107,43 @@ function toggleAudio() {
   }
 }
 
-// Add click event to menu items to toggle containers
-menuItems.forEach((item) => {
-  item.addEventListener("click", () => {
-    // Remove 'active' class from all containers and menu items
-    containers.forEach((container) => container.classList.remove("active"));
-    menuItems.forEach((menuItem) => menuItem.classList.remove("active"));
 
-    // Add 'active' class to the selected container and menu item
-    const sectionId = item.getAttribute("data-section");
-    document.getElementById(sectionId).classList.add("active");
-    item.classList.add("active");
+let currentIndex = 0;
+// Function to update active class
+function updateActiveItem(index) {
+  menuItems.forEach((item, i) => {
+    item.classList.toggle('active', i === index); // Toggle active on menu items
+  });
+  containers.forEach((container, i) => {
+    container.classList.toggle('active', i === index); // Toggle active on containers
+  });
+}
+
+// Click event to toggle containers
+menuItems.forEach((item, index) => {
+  item.addEventListener("click", () => {
+    currentIndex = index; // Update currentIndex based on clicked item
+    updateActiveItem(currentIndex); // Update active class
   });
 });
-// Add smooth scroll to the Journey section
-document.getElementById("exploreMore").addEventListener("click", function () {
-  // Hide all sections
-  containers.forEach((container) => container.classList.remove("active"));
 
-  // Show the "Journey" section
-  document.getElementById("journey").classList.add("active");
+// Keyboard navigation using arrow keys
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'ArrowRight') {
+    currentIndex = (currentIndex + 1) % menuItems.length; // Move right, loop back to start
+    updateActiveItem(currentIndex);
+  } else if (event.key === 'ArrowLeft') {
+    currentIndex = (currentIndex - 1 + menuItems.length) % menuItems.length; // Move left, loop back to end
+    updateActiveItem(currentIndex);
+  }
 });
+
+// Smooth scroll to the Journey section on button click
+document.getElementById("exploreMore").addEventListener("click", function () {
+  currentIndex = Array.from(menuItems).findIndex(item => item.getAttribute("data-section") === "journey");
+  updateActiveItem(currentIndex);
+});
+
 
 
 const dataPoints = [
@@ -224,38 +240,51 @@ const journeyChart = new Chart(ctx, {
 
 
 
-
 // Select buttons and popups
 const toolboxButton = document.getElementById('toolboxButton');
 const contactButton = document.getElementById('contactButton');
 const toolboxPopup = document.getElementById('toolboxPopup');
 const contactPopup = document.getElementById('contactPopup');
+const closeButtons = document.querySelectorAll('.close-btn');
 
-// Function to toggle popup visibility
-function togglePopup(popup) {
-  // Close any open popup
-  document.querySelectorAll('.popup').forEach(p => (p.style.display = 'none'));
+// Function to open popup
+function openPopup(popup) {
+  // Hide any currently open popups
+  document.querySelectorAll('.center-popup').forEach(p => {
+    p.classList.remove('show');
+  });
 
-  // Toggle the selected popup
-  if (popup.style.display === 'none' || popup.style.display === '') {
-    popup.style.display = 'block';
-  } else {
-    popup.style.display = 'none';
-  }
+  // Show the selected popup
+  popup.classList.add('show');
+  document.body.classList.add('popup-active'); // Add background dim
 }
 
-// Add event listeners
+// Function to close all popups
+function closePopup() {
+  document.querySelectorAll('.center-popup').forEach(p => {
+    p.classList.remove('show');
+  });
+  document.body.classList.remove('popup-active'); // Remove background dim
+}
+
+// Event listeners for buttons
 toolboxButton.addEventListener('click', () => {
-  togglePopup(toolboxPopup);
+  openPopup(toolboxPopup);
 });
 
 contactButton.addEventListener('click', () => {
-  togglePopup(contactPopup);
+  openPopup(contactPopup);
+});
+
+// Event listeners for close buttons
+closeButtons.forEach(btn => {
+  btn.addEventListener('click', closePopup);
 });
 
 // Close popup when clicking outside
 document.addEventListener('click', (e) => {
-  if (!e.target.closest('.extra-buttons') && !e.target.closest('.popup')) {
-    document.querySelectorAll('.popup').forEach(p => (p.style.display = 'none'));
+  if (!e.target.closest('.center-popup') && !e.target.closest('.extra-btn')) {
+    closePopup();
   }
 });
+
