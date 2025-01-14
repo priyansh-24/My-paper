@@ -128,8 +128,9 @@ body {
   /* General Styling */
 .journey-map {
   position: relative;
-  width: 100%;
-  padding: 50px 0;
+  width: 80%;
+  padding: 30px;
+  padding-left: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -144,7 +145,7 @@ body {
   border: 1px solid #e0c097;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   padding: 15px;
-  margin: 10px;
+  margin: 15px;
   border-radius: 10px;
   text-align: center;
   font-family: 'Caveat', cursive;
@@ -173,13 +174,13 @@ body {
 /* Left papers */
 .paper.left {
   align-self: flex-start;
-  transform: translateX(30%);
+  transform: rotate(-7deg);
 }
 
 /* Right papers */
 .paper.right {
   align-self: flex-end;
-  transform: translateX(-50%);
+  transform: rotate(12deg);
 }
 
 /* Media query for responsiveness */
@@ -236,7 +237,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%) scale(0.8); /* Initial scale for animation */
   width: 90%;
-  max-width: 400px;
+  max-width: 500px;
   max-height: 300px;
   background-image: url('13.jpg');
   background-size: cover;
@@ -295,9 +296,9 @@ body {
 .contact-image img {
   width: 150px;
   height: auto;
-  border-radius: 10%;
-  margin: 15px;
+  margin: 20px;
   object-fit: cover;
+  scale: 1.2;
 }
 
 /* Contact Details Section */
@@ -541,12 +542,6 @@ body {
 
 
 
- /* Responsive styles */
- @media (max-width: 1024px) {
-  .journey-map .paper {
-    max-width: 100%;
-  }
-
 @media (max-width: 768px) {
   .menu-bar{
     width: 26px;
@@ -582,7 +577,7 @@ body {
   .wave-container {
     bottom: 150px;
   }
-}
+
 
 header {
   text-align: center;
@@ -605,6 +600,8 @@ b {
   font-size: 1.4rem; /* Adjusted font size for emphasis */
 }
 
+
+
 #journey {
   height: 550px; 
 }
@@ -614,8 +611,8 @@ b {
 }
 
 
- 
 }
+
 
 @media (max-width: 480px) {
 
@@ -638,6 +635,10 @@ b {
 
   .portrait-photo {
     max-width: 100px;
+  }
+
+  .journey-map {
+    padding: 15px;
   }
 }
 
