@@ -103,7 +103,18 @@ body {
     color: #005999;
     border-bottom-color: #005999;
   }
+
+
   
+#journey {
+  position: relative;
+  width: 100%; /* Full width */
+  height: 650px; /* Set a defined height for the container */
+  overflow: auto; 
+  padding: 20px; /* Add some padding if needed */
+  box-sizing: border-box; /* Include padding in width/height calculations */
+}
+
   /* List items */
   ul li {
     font-size: 1.3rem; /* Increased font size for list items */
@@ -111,6 +122,7 @@ body {
     margin-top: 0.6rem;
   }
 
+  
 
 
   /* General Styling */
@@ -123,6 +135,7 @@ body {
   align-items: center;
   flex-direction: column;
 }
+
  
 .paper {
   position: relative;
@@ -131,7 +144,7 @@ body {
   border: 1px solid #e0c097;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   padding: 15px;
-  margin: 0px;
+  margin: 10px;
   border-radius: 10px;
   text-align: center;
   font-family: 'Caveat', cursive;
@@ -522,3 +535,108 @@ body {
   color: rgb(180, 180, 180);
   text-decoration: none;
 }
+
+
+
+
+
+ /* Responsive styles */
+ @media (max-width: 1024px) {
+  .journey-map .paper {
+    max-width: 100%;
+  }
+
+  .toolbox-item {
+    flex: 1 1 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-bar{
+    width: 26px;
+  }
+
+  .paper {
+    width: auto;
+  }
+  .container {
+    padding: 10px;
+  }
+
+  .portrait-photo {
+    max-width: 150px;
+  }
+
+  .extra-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .toolbox-item {
+    flex: 1 1 100%;
+  }
+
+  .crumpled-paper {
+    bottom: 5%;
+    right: 5%;
+    transform: translate(0, 0);
+  }
+
+  .audio-toggle-btn {
+    bottom: 150px;
+  }
+
+  .wave-container {
+    bottom: 150px;
+  }
+
+
+header {
+  text-align: center;
+  font-size: 1.8rem; /* Increased font size for headers */
+  margin-bottom: 1rem;
+}
+
+/* Paragraphs and other elements */
+p {
+  font-size: 1rem; /* Increased paragraph font size */
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+/* Bold elements */
+b {
+  color: #0077cc;
+  text-decoration: none;
+  border-bottom: 2px solid #0077cc;
+  font-size: 1.4rem; /* Adjusted font size for emphasis */
+}
+
+#journey {
+  height: 550px; 
+}
+
+ 
+}
+
+@media (max-width: 480px) {
+
+  .menu-bar ul li.active {
+    background-color: #212020;
+    margin-right: -5px;
+  }
+
+  .menu-bar{
+    width: 18px;
+  }
+
+  .menu-bar a {
+    font-size: 0.9rem;
+  }
+
+  .portrait-photo {
+    max-width: 100px;
+  }
+}
+

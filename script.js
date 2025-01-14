@@ -148,12 +148,6 @@ document.addEventListener('keydown', (event) => {
   } else if (event.key === 'ArrowLeft') {
     currentIndex = (currentIndex - 1 + menuItems.length) % menuItems.length; // Move left, loop back to end
     updateActiveItem(currentIndex);
-  } else if (event.key === 'ArrowDown') {
-    currentIndex = (currentIndex + 1) % menuItems.length; // Move right, loop back to start
-    updateActiveItem(currentIndex);
-  } else if (event.key === 'ArrowUp') {
-    currentIndex = (currentIndex - 1 + menuItems.length) % menuItems.length; // Move left, loop back to end
-    updateActiveItem(currentIndex);
   }
 });
 
@@ -164,16 +158,15 @@ document.getElementById("exploreMore").addEventListener("click", function () {
 });
 
 
-
 const dataPoints = [
-  { stage: 'Nursery–10 (School)', marks: 82, school: 'Saint Anne,s School,Titlagarh', year: '2007–2020', markingScheme: '%'},
-  { stage: '11–12', marks: 89, school: 'Yuvoday Junior Collage,Bolangir', year: '2020–2022', markingScheme: '%'},
+  { stage: 'Nursery–10 (School)', marks: 82, school: 'Saint Anne,s School,Titlagarh', year: '2007–2020', markingScheme: '%' },
+  { stage: '11–12', marks: 89, school: 'Yuvoday Junior Collage,Bolangir', year: '2020–2022', markingScheme: '%' },
   { stage: 'Kota', marks: 97, school: 'PW vidyapeeth,kota', year: '2022–2023', markingScheme: 'Percentile' },
   { stage: 'NIT-Rourkela', marks: 88.8, school: 'National Institute of Technology,Rourkela', year: '2023–Present', markingScheme: 'CGPA' },
 ];
 
-const labels = dataPoints.map(point => point.stage);
-const marks = dataPoints.map(point => point.marks);
+const labels = dataPoints.map((point) => point.stage);
+const marks = dataPoints.map((point) => point.marks);
 
 const ctx = document.getElementById('journeyChart').getContext('2d');
 
@@ -184,21 +177,31 @@ const chartData = {
       label: 'Marks over Time',
       data: marks,
       borderColor: 'rgb(0,119,204)',
-      backgroundColor: 'rgb(255, 255, 255,0.4)',
+      backgroundColor: 'rgba(0,119,204,0.2)',
       borderWidth: 2,
       tension: 0.4,
-      pointBackgroundColor: 'rgb(255, 255, 255)',
-      pointRadius: 5,
+      pointBackgroundColor: 'rgb(0,119,204)',
+      pointRadius: 4,
     },
   ],
 };
+
 const options = {
-  responsive: true,
+  responsive: true, // Make chart responsive
+  maintainAspectRatio: false, // Allow flexibility in aspect ratio
   plugins: {
     legend: {
       display: true,
     },
     tooltip: {
+      bodyFont: {
+        size: window.innerWidth < 768 ? 8 : 12, // Smaller font size for mobile
+      },
+      titleFont: {
+        size: window.innerWidth < 768 ? 10 : 18, // Smaller title font size for mobile
+      },
+      padding: 8, // Reduce padding for a compact look
+      boxPadding: 4, 
       callbacks: {
         title: function (tooltipItems) {
           return tooltipItems[0].label;
@@ -206,16 +209,15 @@ const options = {
         label: function (tooltipItem) {
           const point = dataPoints[tooltipItem.dataIndex];
           let marksLabel = point.marks;
-          
+
           if (point.markingScheme === 'CGPA') {
-            marksLabel = `${(point.marks-10)/10}(CGPA)`; // Convert CGPA (e.g., 78.8 to 7.88)
+            marksLabel = `${(point.marks - 10) / 10} (CGPA)`; // Convert CGPA
           } else if (point.markingScheme === 'Percentile') {
-            marksLabel = `${point.marks}(Percentile)`; // Add percentage sign without brackets
+            marksLabel = `${point.marks} (Percentile)`; // Display percentile
           } else {
-            marksLabel = `${point.marks}%`; // Add percentage sign without brackets
+            marksLabel = `${point.marks}%`; // Display percentage
           }
 
-          
           return [
             `Marks: ${marksLabel}`,
             `School: ${point.school}`,
@@ -231,7 +233,7 @@ const options = {
         display: true,
         text: 'Journey Stages',
         font: {
-          size: 18,
+          size: 14,
         },
       },
     },
@@ -242,20 +244,19 @@ const options = {
         display: true,
         text: 'Marks',
         font: {
-          size: 18,
+          size: 14,
         },
       },
     },
   },
 };
 
+
 const journeyChart = new Chart(ctx, {
   type: 'line',
   data: chartData,
   options: options,
 });
-
-
 
 
 
