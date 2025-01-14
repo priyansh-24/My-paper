@@ -159,7 +159,7 @@ document.getElementById("exploreMore").addEventListener("click", function () {
 
 
 const dataPoints = [
-  { stage: 'Nursery–10 (School)', marks: 82, school: 'Saint Anne,s School,Titlagarh', year: '2007–2020', markingScheme: '%' },
+  { stage: 'Nursery–10', marks: 82, school: 'Saint Anne,s School,Titlagarh', year: '2007–2020', markingScheme: '%' },
   { stage: '11–12', marks: 89, school: 'Yuvoday Junior Collage,Bolangir', year: '2020–2022', markingScheme: '%' },
   { stage: 'Kota', marks: 97, school: 'PW vidyapeeth,kota', year: '2022–2023', markingScheme: 'Percentile' },
   { stage: 'NIT-Rourkela', marks: 88.8, school: 'National Institute of Technology,Rourkela', year: '2023–Present', markingScheme: 'CGPA' },
