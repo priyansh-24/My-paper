@@ -363,7 +363,7 @@ function applyHoverEffect(selector) {
     } else if (element.classList.contains('crumpled-paper')) {
       sensitivity = 8; // Sensitivity for .card
     } else if (element.classList.contains('center-popup')) {
-      sensitivity = 200; // Sensitivity for .card
+      sensitivity = 100; // Sensitivity for .card
     } else {
       sensitivity = 70; // Default sensitivity (can adjust if needed)
     }

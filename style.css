@@ -451,7 +451,6 @@ body {
 .center-popup {
   position: fixed;
   top: 30%;
-  left: 30%; /* Initial scale for animation */
   width: 90%;
   max-width: 500px;
   max-height: 300px;
