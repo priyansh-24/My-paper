@@ -14,6 +14,8 @@
 
   <!-- Crumpled Paper -->
   <div class="crumpled-paper" id="crumpledPaper"></div>
+  <div class="custom-cursor"></div>
+
 
   
 
@@ -42,9 +44,62 @@
   
   <div class="container" id="projects">
     <header>My Projects</header>
-    
+    <div class="puzzle-container">
+      <!-- Puzzle boxes for each project -->
+      <div class="puzzle-box" onclick="showModal('Self-Balancing Bot', 'A robotics project where I designed and built a self-balancing bot that uses sensors and precise motor control to maintain stability. This project highlights engineering and programming skills to create a dynamic, real-time responsive system.')">
+        <img src="1.png" class="puzzle-piece connected piece2" alt="Piece 1">
+        <div class="title-overlay">Self-Balancing Bot</div>
+      </div>
+      <div class="puzzle-box" onclick="showModal('Lo0ser: Customizable T-Shirt Website', 'An interactive and user-friendly website that allows users to design and customize their own T-shirts with ease. This project involved building an intuitive design tool and deploying it at <a href=\'https://lo0ser.netlify.app\' target=\'_blank\'>lo0ser.netlify.app</a>.')">
+        <img src="2.png" class="puzzle-piece connected piece3" alt="Piece 2">
+        <div class="title-overlay">Lo0ser Website</div>
+      </div>
+      <div class="puzzle-box" onclick="showModal('Zombie Shooter Game', 'A fast-paced, action-packed zombie shooter game where players face waves of increasingly challenging enemies. Developed with an engaging gameplay loop and immersive graphics for a thrilling experience.')">
+        <img src="3.png" class="puzzle-piece connected piece1" alt="Piece 3">
+        <div class="title-overlay">Zombie Shooter Game</div>
+      </div>
+      <div class="puzzle-box" onclick="showModal('3D Models Using Blender', 'A series of detailed and creative 3D models built in Blender, including a Pepsi ad, buildings, character models (Donald), bottles, hammers, and various VFX scenes. This project demonstrates my proficiency in 3D modeling, rendering, and animation.')">
+        <img src="4.png" class="puzzle-piece connected piece1" alt="Piece 4">
+        <div class="title-overlay">3D Models in Blender</div>
+      </div>
+      <div class="puzzle-box" onclick="showModal('Line-Following Bot', 'A robotics project where I designed a bot capable of following a pre-defined path using line-detection algorithms and sensors. This project combines electronics and programming to create a simple yet effective autonomous system.')">
+        <img src="5.png" class="puzzle-piece connected piece4" alt="Piece 5">
+        <div class="title-overlay">Line-Following Bot</div>
+      </div>
+      <div class="puzzle-box" onclick="showModal('Conexus: Student Connection Platform', 'A web platform designed to connect students in a college environment for collaboration and sharing resources. Conexus fosters communication and networking in an academic setting.')">
+        <img src="6.png" class="puzzle-piece connected piece3" alt="Piece 6">
+        <div class="title-overlay">Conexus Platform</div>
+      </div>
+      <div class="puzzle-box" onclick="showModal('Yogit: AI Yoga Trainer', 'An innovative website that uses live video to analyze yoga poses and provide real-time feedback to improve accuracy and posture. Yogit blends fitness and technology seamlessly.')">
+        <img src="7.png" class="puzzle-piece connected piece4" alt="Piece 7">
+        <div class="title-overlay">Yogit AI Yoga Trainer</div>
+      </div>
+      <div class="puzzle-box" onclick="showModal('Live Weather, News, and Stock Tracker', 'A multifunctional website that integrates APIs to provide live updates on weather, news, stock prices, and time. A hub of real-time information in a sleek and easy-to-use interface.')">
+        <img src="8.png" class="puzzle-piece unconnected piece2" alt="Piece 8">
+        <div class="title-overlay">Live Tracker Website</div>
+      </div>
+      <div class="puzzle-box" onclick="showModal('VFX and Animation Projects', 'A collection of visually stunning VFX and animation projects, showcasing advanced skills in Blender and Adobe tools to create breathtaking visual stories and effects.')">
+        <img src="9.png" class="puzzle-piece unconnected piece3" alt="Piece 9">
+        <div class="title-overlay">VFX & Animation</div>
+      </div>
+    </div>
   </div>
-
+  
+  
+    <!-- Modal Structure -->
+    <div id="projectModal" class="modal">
+      <div class="modal-content">
+        <div class="curtain">
+          <span class="close-btn" onclick="closeModal()">&times;</span>
+          <h2 id="modalTitle"></h2>
+          <p id="modalDescription"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
   <div class="container" id="achivements">
     <header>My Achievements</header>
     <div class="journey-map">
@@ -108,7 +163,7 @@
     <div class="wave wave3"></div>
   </div>
 
-  
+
   <!-- Toolbox and Contact Buttons -->
 <div class="extra-buttons">
   <button id="toolboxButton" class="extra-btn">🔧</button>
@@ -117,7 +172,7 @@
 
 
 
-
+<div id="backdrop" class="backdrop"></div>
 <!-- Popup for Toolbox -->
 <div id="toolboxPopup" class="center-popup">
   <div class="popup-content">

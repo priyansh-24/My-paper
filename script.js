@@ -13,6 +13,21 @@ let offsetX = 0;
 let offsetY = 0;
 audio.volume = 0.3;  
 
+
+// Select the custom cursor
+const customCursor = document.querySelector('.custom-cursor');
+
+// Update cursor position based on mouse movement
+document.addEventListener('mousemove', (e) => {
+  customCursor.style.left = `${e.clientX}px`;
+  customCursor.style.top = `${e.clientY}px`;
+});
+
+// Hide the default cursor
+document.body.style.cursor = 'none';
+
+
+
 audio.pause();
 // Dragging with the mouse
 crumpledPaper.addEventListener('mousedown', (e) => {
@@ -61,6 +76,7 @@ crumpledPaper.addEventListener('click', () => {
     setTimeout(() => {
       menuBar.style.left = '0px'; // Slide in the menu
       crumpledPaper.style.display = 'none';
+      customCursor.style.cursor = 'block';
       document.getElementById("home").classList.add("active");
       startAudio(); // Start audio after unfolding
     }, 1000);
@@ -79,7 +95,6 @@ document.addEventListener('keydown', (e) => {
     }, 1000);
   }
 });
-
 
 
 // Start audio and show toggle button
@@ -266,7 +281,7 @@ const contactButton = document.getElementById('contactButton');
 const toolboxPopup = document.getElementById('toolboxPopup');
 const contactPopup = document.getElementById('contactPopup');
 const closeButtons = document.querySelectorAll('.close-btn');
-
+const backdrop = document.getElementById('backdrop');
 // Function to open popup
 function openPopup(popup) {
   // Hide any currently open popups
@@ -276,6 +291,7 @@ function openPopup(popup) {
 
   // Show the selected popup
   popup.classList.add('show');
+  backdrop.classList.add('show');
   document.body.classList.add('popup-active'); // Add background dim
 }
 
@@ -284,6 +300,7 @@ function closePopup() {
   document.querySelectorAll('.center-popup').forEach(p => {
     p.classList.remove('show');
   });
+  backdrop.classList.remove('show');
   document.body.classList.remove('popup-active'); // Remove background dim
 }
 
@@ -308,3 +325,24 @@ document.addEventListener('click', (e) => {
   }
 });
 
+
+
+// Function to open the modal with dynamic content
+function showModal(title, description) {
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalDescription').textContent = description;
+  document.getElementById('projectModal').style.display = 'flex'; // Make modal visible
+}
+
+// Function to close the modal
+function closeModal() {
+  document.getElementById('projectModal').style.display = 'none'; // Hide modal
+}
+
+// Optional: Close modal when clicking outside of it
+window.onclick = function (event) {
+  const modal = document.getElementById('projectModal');
+  if (event.target === modal) {
+    closeModal();
+  }
+};

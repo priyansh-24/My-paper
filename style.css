@@ -45,7 +45,19 @@ body {
       left: 40%;
     }
   }
-  
+  /* Custom cursor styling */
+.custom-cursor {
+  position: fixed;
+  width: 10px; /* Default size for black dot */
+  height: 10px;
+  background-color: black;
+  border-radius: 50%;
+  pointer-events: none; /* Prevent interfering with clicks */
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease;
+}
+
   /* Container with torn paper borders */
   .container {
     font-family: 'Patrick Hand', cursive; /* Handwritten font with fallback */
@@ -137,6 +149,7 @@ body {
   flex-direction: column;
 }
 
+
  
 .paper {
   position: relative;
@@ -151,6 +164,16 @@ body {
   font-family: 'Caveat', cursive;
   z-index: 1;
 }
+
+.paper.left:hover {
+  transform: rotate(0deg);
+  scale: 1.1;
+}
+.paper.right:hover {
+  transform: rotate(0deg);
+  scale: 1.1;
+}
+
 
 .paper h3 {
   margin: 0 0 10px;
@@ -183,6 +206,10 @@ body {
   transform: rotate(12deg);
 }
 
+
+
+
+
 /* Media query for responsiveness */
 @media (max-width: 768px) {
   .paper.left,
@@ -190,6 +217,139 @@ body {
     align-self: center;
     transform: translateX(0%);
   }
+}
+
+
+/* Container styling */
+.puzzle-container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(3, 150px); /* Create a 3x3 grid */
+  grid-gap: 20px; /* Space between pieces */
+  position: relative;
+  width: 90%; /* Container width */
+  height: auto;
+  padding: 20px;
+  padding-left: 40px;
+}
+
+/* Individual puzzle box */
+.puzzle-box {
+  position: relative;
+  display: inline-block;
+}
+
+/* Puzzle pieces */
+.puzzle-piece {
+  width: 150px;
+  height: 150px;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+/* Title overlay styling */
+.title-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent black background */
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  padding: 5px 0;
+  font-weight: bold;
+  transition: opacity 0.3s ease;
+  opacity: 1; /* Initially hidden */
+}
+
+/* Hover effect for title */
+.puzzle-box:hover .title-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal content box */
+.modal-content {
+  background-color: #828282;
+  background-image: url(13.jpg);
+  border-radius: 10px;
+  border: 4px solid rgb(0, 0, 0);
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  position: relative;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+}
+
+.curtain{
+  padding: 10px;
+  width: 96%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5); 
+}
+
+/* Modal title */
+#modalTitle {
+  font-family: 'Caveat', cursive;
+  margin-top: 0;
+  font-size: 28px;
+  color: #002e4e;
+  text-decoration: underline;
+}
+
+/* Modal description */
+#modalDescription {
+  font-weight: bold;
+  font-size: 16px;
+  color: #000000;
+}
+
+/* Custom transformations for connected pieces */
+.piece1 {
+  transform: translate(10px, -20px) rotate(20deg);
+}
+
+.piece2 {
+  transform: translate(-20px, 15px) rotate(-15deg);
+}
+
+.piece3 {
+  transform: translate(20px, -10px) rotate(10deg);
+}
+
+.piece4 {
+  transform: translate(-5px, 30px) rotate(-20deg);
+}
+
+/* Hover effect for puzzle pieces */
+.puzzle-piece:hover {
+  transform: scale(1.15);
 }
 
 
@@ -216,7 +376,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  cursor: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Match shadow */
   transition: all 0.3s ease;
 }
@@ -259,6 +419,21 @@ body {
   transform: translate(-50%, -50%) scale(1);
 }
 
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 999; /* Layer behind the popup */
+  display: none; /* Initially hidden */
+}
+
+.backdrop.show {
+  display: block; /* Show when active */
+}
+
 /* Close Button */
 .close-btn {
   position: absolute;
@@ -266,7 +441,7 @@ body {
   right: 15px;
   font-size: 25px;
   color: #313131;
-  cursor: pointer;
+  cursor: none;
   background: none;
   font-weight: bolder;
   border: none;
@@ -318,6 +493,7 @@ body {
 }
 
 .contact-details ul li a {
+  cursor: none;
   display: flex;
   align-items: center;
   font-size: 16px;
@@ -417,7 +593,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    cursor: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 2;   /* Keeps it behind other elements */
   }
@@ -530,6 +706,7 @@ body {
   text-align: center;
   display: block;
   writing-mode: vertical-rl; /* Rotate text vertically */
+  cursor: none;
   transition: background-color 0.3s, color 0.3s;
 }
 
