@@ -747,13 +747,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.2); /* Divider */
   border-top-right-radius: 15px; /* Rounded top-right corner */
   border-bottom-right-radius: 15px; /* Rounded bottom-right corner */
 }
 /* Style for the active (currently selected) menu item */
 .menu-bar ul li.active {
-  background-color: #212020;
+  background-color: #202020;
   margin-right: -10px;
 }
 .menu-bar ul li a {
@@ -767,11 +766,10 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-.menu-bar ul li a:hover {
-  color: rgb(180, 180, 180);
+.menu-bar ul li:hover {
+  background-color: #202020;
   text-decoration: none;
 }
-
 
 
 
