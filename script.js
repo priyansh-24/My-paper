@@ -346,3 +346,82 @@ window.onclick = function (event) {
     closeModal();
   }
 };
+
+
+
+
+// Function to apply the 2-axis effect to a set of elements
+function applyHoverEffect(selector) {
+  const elements = document.querySelectorAll(selector);
+
+  elements.forEach((element) => {
+    let sensitivity;
+    if (element.classList.contains('container')) {
+      sensitivity = 300; // Sensitivity for .container
+    } else if (element.classList.contains('crumpled-paper')) {
+      sensitivity = 8; // Sensitivity for .card
+    } else if (element.classList.contains('center-popup')) {
+      sensitivity = 200; // Sensitivity for .card
+    } else {
+      sensitivity = 70; // Default sensitivity (can adjust if needed)
+    }
+
+    element.addEventListener('mousemove', (event) => {
+      const rect = element.getBoundingClientRect();
+
+      // Calculate cursor position relative to the element
+      const mouseX = event.clientX - rect.left;
+      const mouseY = event.clientY - rect.top;
+
+      // Calculate deformation based on cursor distance from the center
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      // Adjust sensitivity for both axes
+      const offsetX = (mouseX - centerX) / sensitivity; // Horizontal tilt
+      const offsetY = (mouseY - centerY) / sensitivity; // Vertical tilt
+
+      // Apply the transformation for 2-axis movement
+      element.style.transform = `perspective(800px) rotateX(${-offsetY}deg) rotateY(${offsetX}deg)`;
+    });
+  });
+}
+
+// Apply the hover effect to both containers and cards
+applyHoverEffect('.container');
+applyHoverEffect('.crumpled-paper');
+applyHoverEffect('.center-popup');
+
+
+
+
+
+// Select all divs with the class 'interactive-effect'
+const interactiveDivs = document.querySelectorAll('.container');
+
+interactiveDivs.forEach((div) => {
+  // Get the sensitivity value from the data attribute
+  const sensitivity = 300; // Default to 10 if not provided
+
+  div.addEventListener('mousemove', (event) => {
+    const rect = div.getBoundingClientRect();
+
+    // Calculate cursor position relative to the div
+    const mouseX = event.clientX - rect.left;
+    const mouseY = event.clientY - rect.top;
+
+    // Calculate deformation based on cursor distance from the center
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    // Adjust sensitivity for both axes
+    const offsetX = (mouseX - centerX) / sensitivity; // Horizontal tilt
+    const offsetY = (mouseY - centerY) / sensitivity; // Vertical tilt
+
+    // Apply the transformation for 2-axis movement
+    div.style.transform = `perspective(800px) rotateX(${-offsetY}deg) rotateY(${offsetX}deg)`;
+  });
+});
+
+
+

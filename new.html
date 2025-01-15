@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Bee Motion</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      height: 100vh;
+      background-color: #f0f8ff;
+    }
+
+    /* Bee styling */
+    .bee {
+      width: 40px;
+      height: 40px;
+      background-image: url('bee.png'); /* Replace with your bee image */
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: absolute;
+      transform-origin: center;
+      animation: flap 0.5s infinite;
+    }
+
+    /* Trail dot styles */
+    .trail {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background-color: rgb(0, 0, 0,0.4);
+      border-radius: 50%;
+      opacity: 1;
+      animation: fade-out 2s linear forwards;
+    }
+
+    @keyframes flap {
+        0% {
+          scale: 1;
+        }
+        50% {
+          scale: 1.08;
+        }
+        100% {
+            scale: 1;
+          }
+      }
+
+    /* Fading trail animation */
+    @keyframes fade-out {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bee element -->
+  <div class="bee"></div>
+
+  <script>
+    const bee = document.querySelector('.bee');
+    const body = document.body;
+    const speed = 01; // Speed of the bee
+    const maxWidth = window.innerWidth;
+    const maxHeight = window.innerHeight;
+
+    let position = { x: maxWidth / 2, y: maxHeight / 2 }; // Initial position
+    let angle = Math.random() * 2 * Math.PI; // Random starting angle
+
+    // Function to update the bee's position
+    function updateBee() {
+      // Calculate next position
+      position.x += speed * Math.cos(angle);
+      position.y += speed * Math.sin(angle);
+
+      // Bounce off walls
+      if (position.x <= 0 || position.x >= maxWidth) {
+        angle = Math.PI - angle;
+      }
+      if (position.y <= 0 || position.y >= maxHeight) {
+        angle = -angle;
+      }
+
+      // Update bee's position
+      bee.style.left = `${position.x}px`;
+      bee.style.top = `${position.y}px`;
+
+      // Rotate the bee
+      const rotation = angle * (180 / Math.PI) -30 ; // Convert radians to degrees
+      bee.style.transform = `translate(-50%, -50%) rotate(${rotation + 90}deg)`; // +90 to align bee image correctly
+
+      // Request the next frame
+      requestAnimationFrame(updateBee);
+    }
+
+    // Function to create trail dots
+    function createTrailDot() {
+      const dot = document.createElement('div'); // Create a dot element
+      dot.classList.add('trail'); // Add the trail class
+      dot.style.left = `${position.x}px`; // Position horizontally
+      dot.style.top = `${position.y}px`; // Position vertically
+      body.appendChild(dot);
+
+      // Remove the dot after it fades out
+      setTimeout(() => dot.remove(), 2000); // Match fade-out duration
+    }
+
+    // Start the animation
+    updateBee();
+
+    // Create trail dots periodically
+    setInterval(createTrailDot, 100);
+  </script>
+
+</body>
+</html>
