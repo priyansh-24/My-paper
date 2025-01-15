@@ -20,8 +20,49 @@ body {
     background: url('img/7.webp') no-repeat center/contain;
     cursor: grab;
     transition: all 0.5s ease-in-out;
-    z-index: 10;
+    z-index: -10;
     transition: transform 0.2s ease-out, border-radius 0.2s ease-out;
+  }
+
+
+  /* Hover Effect */
+  .crumbled-paper-text:hover {
+    color: #000;
+    transform: scale(1.05);
+    animation: pulse 1s infinite alternate ease-in-out;
+  }
+
+  /* Crumbled Paper Background Effect */
+  .crumbled-paper-text::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-image: url('crumbled-paper.jpg'); /* Replace with your crumbled paper texture */
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0.7;
+  }
+
+  .crumbled-paper-text:hover::after {
+    transform: scale(1.05); /* Slight zoom-in on hover */
+    opacity: 1;
+  }
+
+  /* Animation: Pulse Effect */
+  @keyframes pulse {
+    from {
+      transform: scale(1.05);
+    }
+    to {
+      transform: scale(1.1);
+    }
   }
   
   .crumpled-paper:active {
@@ -57,7 +98,19 @@ body {
   transform: translate(-50%, -50%);
   transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease;
 }
-
+.text {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: #585757;
+  cursor: pointer;
+  margin-top: 40px;
+  transform: rotate(8deg) ;
+}
+.text:hover{
+  color: #464646;
+  scale: 1.04 ;
+}
   /* Container with torn paper borders */
   .container {
     font-family: 'Patrick Hand', cursive; /* Handwritten font with fallback */

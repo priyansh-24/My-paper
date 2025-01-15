@@ -5,6 +5,7 @@ const audioToggle = document.getElementById('audioToggle');
 const menuBar = document.getElementById('menuBar');
 const menuItems = document.querySelectorAll(".menu-bar ul li");
 const containers = document.querySelectorAll(".container");
+const textElement = document.getElementById('text');
 
 
 audioToggle.style.display = 'none';
@@ -77,6 +78,7 @@ crumpledPaper.addEventListener('click', () => {
       menuBar.style.left = '0px'; // Slide in the menu
       crumpledPaper.style.display = 'none';
       customCursor.style.cursor = 'block';
+      text.style.display = 'none';
       document.getElementById("home").classList.add("active");
       startAudio(); // Start audio after unfolding
     }, 1000);
