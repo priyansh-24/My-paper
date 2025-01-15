@@ -99,6 +99,8 @@ body {
   transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease;
 }
 .text {
+  margin-right: 15px;
+  margin-left: 15px;
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
