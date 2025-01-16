@@ -12,7 +12,7 @@ audioToggle.style.display = 'none';
 let isDragging = false;
 let offsetX = 0; 
 let offsetY = 0;
-audio.volume = 0.3;  
+audio.volume = 0.12;  
 
 
 // Select the custom cursor
